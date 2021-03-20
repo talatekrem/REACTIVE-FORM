@@ -1,0 +1,81 @@
+Technology used: <input type="text" [formControl]="Technologyused">
+
+<br>
+
+<input type="button" value="Set Default" (click)="setdefaultvalue()">
+
+<form #MainForm="ngForm" novalidate>
+  <div class="col-md-12">
+    <div class="row">
+      <div class="col-md-6">
+        <div class="form-group row">
+          <label class="col-md-4">Username *</label>
+          <div class="col-md-8">
+            <input name="username"
+                   #usernameInput="ngModel"
+                   [ngClass]="usernameInput.invalid && !validate ? 'invalid-input' : ''"
+                   [(ngModel)]="username" required>
+            <div class="error" *ngIf="usernameInput.invalid && !validate">
+              Important area
+            </div>
+          </div>
+        </div>
+        <div class="form-group row">
+          <label class="col-md-4">Password *</label>
+          <div class="col-md-8">
+            <input name="password"
+                   #passwordInput="ngModel"
+                   [class.invalid-input]="passwordInput.invalid && !validate"
+                   [(ngModel)]="password" required>
+          </div>
+        </div>
+        <div class="form-group row">
+          <label class="col-md-4">portfolio</label>
+          <div class="col-md-8">
+            <input name="portfolio"
+                   [(ngModel)]="portfolio">
+          </div>
+        </div>
+        <div class="form-group row">
+          <label class="col-md-4">guess</label>
+          <div class="col-md-8">
+            <input name="guess"
+                   #guessInput="ngModel"
+                   maxlength="5"
+                   [class.invalid-input]="guessInput.invalid && !validate"
+                   [(ngModel)]="guess" required>
+          </div>
+
+        </div>
+        <div class="form-group row">
+          <label class="col-md-4">what</label>
+          <div class="col-md-8">
+            <input name="what"
+                   [(ngModel)]="what">
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+  <button class="btn btn-sm btn-secondary" (click)="MainForm.valid ? submitform() : validate = false">
+    Submit
+  </button>
+  <button class="btn btn-sm btn-warning" (click)="guess = '123456'">Add guest</button>
+</form>
+
+
+<router-outlet></router-outlet>
+
+
+
+
+
+
+
+
+
+
+
+
+
